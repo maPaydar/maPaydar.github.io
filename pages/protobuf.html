@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" href="../stylesheets/prism.css">
+    <!--<link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">-->
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Amin Paydar Github</title>
+</head>
+
+<body>
+<header>
+    <div class="inner">
+        <h1>Mapaydar.GitHub.io</h1>
+        <h2></h2>
+        <a href="https://github.com/maPaydar" class="button">
+            <small>Follow me on</small>
+            GitHub</a>
+    </div>
+</header>
+
+<div id="content-wrapper">
+    <div class="inner clearfix">
+        <section id="main-content">
+            <div>
+                <h1>
+                    Installation
+                </h1>
+                <p>
+                    <ul style="">
+                        <li>Download latest version of protocol buffer from <a href="https://github.com/google/protobuf"
+                                                                               target="_blank">here</a>. for lazy pepole
+                            it
+                            is
+                            <a href="https://github.com/google/protobuf/releases/download/v3.0.0/protoc-3.0.0-linux-x86_64.zip">here</a>.
+                        </li>
+                        <li>
+                            or you can use git :
+                            <pre><code class="language-protobuf">git clone https://github.com/google/protobuf.git</code></pre>
+                        </li>
+                        <li>
+                            <h2>C++ Installation - Unix</h2>
+                <p>
+                    To build protobuf from source, the following tools are needed:
+                <ul>
+                    <li>autoconf</li>
+                    <li>automake</li>
+                    <li>libtool</li>
+                    <li>curl (used to download gmock)</li>
+                    <li>make</li>
+                    <li>g++</li>
+                    <li>unzip</li>
+                </ul>
+                On Ubuntu, you can install them with:
+                <br/>
+                <pre><code class="language-protobuf">$ sudo apt-get install autoconf automake libtool curl make g++ unzip</code></pre>
+                <br/>
+                then
+                <br/>
+                <pre><code class="language-protobuf">$ ./autogen.sh</code></pre>
+                <pre><code class="language-protobuf">$ ./configure
+$ make
+$ make check
+$ sudo make install
+$ sudo ldconfig
+</code></pre>
+                By default, the package will be installed to /usr/local. However, on many platforms, /usr/local/lib is
+                not
+                part of LD_LIBRARY_PATH. You can add it, but it may be easier to just install to /usr instead. To do
+                this,
+                invoke configure as follows:
+                <br/>
+                <pre><code class="language-protobuf">./configure --prefix=/usr</code></pre>
+                </p>
+                </li>
+                <li>
+                    That's it. for test run this :
+                    <pre><code class="language-protobuf">$ protoc -version</code></pre>
+                    <br>
+                    It's print version of yout protoc in terminal.
+                </li>
+                <li>for Windows Installation go to <a
+                        href="https://github.com/google/protobuf/blob/master/src/README.md#c-installation---windows">here</a>
+                </li>
+                </ul>
+                </p>
+            </div>
+            <div>
+                <h1>OverView</h1>
+                <ul>
+                    <li>
+                        <h2>What are protocol buffers?</h2>
+                        <p>
+                            Protocol buffers are a flexible, efficient, automated mechanism for serializing structured
+                            data – think XML, but smaller, faster, and simpler. You define how you want your data to be
+                            structured once, then you can use special generated source code to easily write and read
+                            your structured data to and from a variety of data streams and using a variety of languages.
+                            You can even update your data structure without breaking deployed programs that are compiled
+                            against the "old" format.
+                        </p>
+                        <h2>How do they work?</h2>
+                        <p>
+                            You specify how you want the information you're serializing to be structured by defining
+                            protocol buffer message types in .proto files. Each protocol buffer message is a small
+                            logical record of information, containing a series of name-value pairs.
+                        </p>
+                        <h2>Here is a simple example : Person.proto</h2>
+                        <p>
+                            <pre><code class="language-protobuf">syntax = "proto3";
+package person;
+message Person {
+    required string name = 1;
+    required int32 id = 2;
+    optional string email = 3;
+
+    enum PhoneType {
+        MOBILE = 0;
+        HOME = 1;
+        WORK = 2;
+    }
+
+    message PhoneNumber {
+        required string number = 1;
+        optional PhoneType type = 2 [default = HOME];
+    }
+
+    repeated PhoneNumber phone = 4;
+}</code></pre>
+                        Then you can generate code in which language you want that protocol buffers support it.
+                        I generage js codes
+                        <br>
+                        <pre><code class="language-protobuf">$ protoc --js_out=import_style=commonjs,binary:output  Person.proto</code></pre>
+                        This command generate code in js in a file named Person_pb.js in output/person directory.
+                        <br>
+                        Then you can use Message module in this way :
+                        <br>
+                        <pre><code class="language-javascript">var person_proto = require('./Person_pb');
+var person = new person_proto.Person();
+person.setName('amin');
+person.setEmail('mapsgp920@gmail.com');
+console.log(person);</code></pre>
+                        
+                        </p>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+        <aside id="sidebar">
+            <h1>
+                I'm Amin Paydar.
+            </h1>
+        </aside>
+    </div>
+</div>
+
+<script src="../javascripts/prism.js"></script>
+</body>
+
+</html>

@@ -6,6 +6,15 @@
  *    user zoom.
  */
 
+@font-face {
+    font-family: 'IrSerif';
+    src: url('fonts/irsans.ttf') format("truetype");
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('fonts/Lato-Thin.ttf') format("truetype");
+}
+
 html {
   font-family: sans-serif; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
@@ -17,8 +26,9 @@ html {
  */
 
 body {
-  margin: 0;
+    margin: 0;
 }
+
 
 /* HTML5 display definitions
    ========================================================================== */
@@ -436,8 +446,10 @@ body {
   background: #fafafa url(../images/body-bg.jpg) 0 0 repeat;
 }
 
-p {
-  margin-top: 0;
+p, li {
+    margin-top: 0;
+    font-family: 'Lato';
+    font-weight: bold;
 }
 
 a {
@@ -726,7 +738,7 @@ blockquote {
 
 ul {
   list-style-position: inside;
-  list-style: disc;
+  list-style: none;
   padding-left: 20px;
 }
 
