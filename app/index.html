@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Chrome, Firefox OS, Opera and Vivaldi -->
+    <meta name="theme-color" content="#a74405">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#a74405">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#a74405">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" href="./css/angular-material.min.css" media="screen">
+    <link rel="stylesheet" href="./css/style.css" media="screen" title="no title">
+
+</head>
+
+<body ng-app="AngularMaterialApp" layout="column" ng-cloak ng-controller="AppController">
+
+    <h1 class="preload">Loading...</h1>
+
+    <!-- Body Content -->
+    <md-toolbar layout="row" class="md-toolbar-tools">
+        <md-button class="menu md-icon-button" hide-gt-sm ng-click="toggle()" aria-label="Show User List">
+            <md-icon md-svg-icon="menu"></md-icon>
+        </md-button>
+        <h1>MagicMaterialApp</h1>
+    </md-toolbar>
+
+    <div flex layout="row">
+
+        <md-sidenav class="md-whiteframe-4dp" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" ng-click="toggle()">
+        </md-sidenav>
+
+        <md-content flex id="content">
+            <div>
+                <md-button ng-click="openToast()">OpenToast</md-button>
+            </div>
+            <div ng-view></div>
+            <!--
+            <md-calendar ng-model="birthday">
+            </md-calendar>
+            -->
+            <md-card>
+                <md-card-content>
+                    <h2>Card headline</h2>
+                    <p>Card content</p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button>
+                        <a href="#hello">Hello</a>
+                    </md-button>
+                    <md-button>
+                        <a href="#about">About</a>
+                    </md-button>
+                </md-card-actions>
+            </md-card>
+        </md-content>
+    </div>
+</body>
+<!-- Application bootstrap -->
+<script type="text/javascript">
+    function loadScript(url, callback) {
+
+        var script = document.createElement("script")
+        script.type = "text/javascript";
+
+        if (script.readyState) { //IE
+            script.onreadystatechange = function() {
+                if (script.readyState == "loaded" ||
+                    script.readyState == "complete") {
+                    script.onreadystatechange = null;
+                    script.src = url;
+                    document.getElementsByTagName("head")[0].appendChild(script);
+                    callback();
+                }
+            };
+        } else { //Others
+            script.onload = function() {
+                console.log('onload');
+                callback();
+            };
+        }
+        script.src = url;
+        document.getElementsByTagName("head")[0].appendChild(script);
+    }
+    loadScript("./src/bootstrapDist.js", function() {
+        document.getElementsByClassName('preload')[0].style.display = 'none';
+        console.log('loading finished...');
+    });
+</script>
+
+</html>

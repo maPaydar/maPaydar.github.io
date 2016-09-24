@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'IrSerif';
+    src: url('../assets/fonts/irsans.ttf') format("truetype");
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('../assets/fonts/Lato-Thin.ttf') format("truetype");
+}
+@font-face {
+    font-family: 'BalooBhai';
+    src: url('../assets/fonts/BalooBhai-Regular.ttf') format("truetype");
+}
+body {
+    font-family: IrSerif, BalooBhai;
+}
+
+.preload {
+  color: #594a4a;
+  margin: 100px;
+  text-align: center;
+  font-size: 800;
+}
