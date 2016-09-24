@@ -33,6 +33,54 @@
     <div class="inner clearfix">
         <section id="main-content">
             <div>
+                <h1>OverView</h1>
+                <ul>
+                    <li>
+                        <h2>What are protocol buffers?</h2>
+                        <p>
+                            Protocol buffers are a flexible, efficient, automated mechanism for serializing structured
+                            data – think XML, but smaller, faster, and simpler. You define how you want your data to be
+                            structured once, then you can use special generated source code to easily write and read
+                            your structured data to and from a variety of data streams and using a variety of languages.
+                            You can even update your data structure without breaking deployed programs that are compiled
+                            against the "old" format.
+                        </p>
+                        <h2>How do they work?</h2>
+                        <p>
+                            You specify how you want the information you're serializing to be structured by defining
+                            protocol buffer message types in .proto files. Each protocol buffer message is a small
+                            logical record of information, containing a series of name-value pairs.
+                        </p>
+                        <h2>Here is a simple example : Person.proto</h2>
+                        <p>
+                            <pre><code class="language-protobuf">syntax = "proto3";
+package person;
+message Person {
+    string name = 1;
+    int32 id = 2;
+    string email = 3;
+}</code></pre>
+                        Then you can generate code in which language you want that protocol buffers support it.
+                        I generage js codes
+                        <br>
+                        <pre><code class="language-protobuf">$ protoc --js_out=import_style=commonjs,binary:output  Person.proto</code></pre>
+                        This command generate code in js in a file named Person_pb.js in output/person directory.
+                        <br>
+                        Then you can use Message module in this way :
+                        <br>
+                        <pre><code class="language-javascript">var person_proto = require('./Person_pb');
+                            var person = new person_proto.Person();
+                            person.setName('amin');
+                            person.setEmail('mapsgp920@gmail.com');
+                            console.log(person);</code></pre>
+                        For more detail to generate codes in js go to <a href="https://github.com/google/protobuf/tree/master/js">Here</a>.
+                        </p>
+
+                    </li>
+
+                </ul>
+            </div>
+            <div>
                 <h1>
                     Installation
                 </h1>
@@ -95,71 +143,14 @@ $ sudo ldconfig
                 </ul>
                 </p>
             </div>
-            <div>
-                <h1>OverView</h1>
-                <ul>
-                    <li>
-                        <h2>What are protocol buffers?</h2>
-                        <p>
-                            Protocol buffers are a flexible, efficient, automated mechanism for serializing structured
-                            data – think XML, but smaller, faster, and simpler. You define how you want your data to be
-                            structured once, then you can use special generated source code to easily write and read
-                            your structured data to and from a variety of data streams and using a variety of languages.
-                            You can even update your data structure without breaking deployed programs that are compiled
-                            against the "old" format.
-                        </p>
-                        <h2>How do they work?</h2>
-                        <p>
-                            You specify how you want the information you're serializing to be structured by defining
-                            protocol buffer message types in .proto files. Each protocol buffer message is a small
-                            logical record of information, containing a series of name-value pairs.
-                        </p>
-                        <h2>Here is a simple example : Person.proto</h2>
-                        <p>
-                            <pre><code class="language-protobuf">syntax = "proto3";
-package person;
-message Person {
-    required string name = 1;
-    required int32 id = 2;
-    optional string email = 3;
 
-    enum PhoneType {
-        MOBILE = 0;
-        HOME = 1;
-        WORK = 2;
-    }
-
-    message PhoneNumber {
-        required string number = 1;
-        optional PhoneType type = 2 [default = HOME];
-    }
-
-    repeated PhoneNumber phone = 4;
-}</code></pre>
-                        Then you can generate code in which language you want that protocol buffers support it.
-                        I generage js codes
-                        <br>
-                        <pre><code class="language-protobuf">$ protoc --js_out=import_style=commonjs,binary:output  Person.proto</code></pre>
-                        This command generate code in js in a file named Person_pb.js in output/person directory.
-                        <br>
-                        Then you can use Message module in this way :
-                        <br>
-                        <pre><code class="language-javascript">var person_proto = require('./Person_pb');
-var person = new person_proto.Person();
-person.setName('amin');
-person.setEmail('mapsgp920@gmail.com');
-console.log(person);</code></pre>
-                        
-                        </p>
-                    </li>
-
-                </ul>
-            </div>
         </section>
         <aside id="sidebar">
-            <h1>
-                I'm Amin Paydar.
-            </h1>
+            <ul style="list-style: disc;">
+                <li><a><h3>OverView and Installation</h3></a></li>
+                <li><a><h3>Protocol Buffer Deeper</h3></a></li>
+                <li><a><h3>Protocol Buffer Deeper</h3></a></li>
+            </ul>
         </aside>
     </div>
 </div>
